@@ -3,24 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNSOLVED - Detective Game</title>
+    <title>UNSOLVED - Game</title>
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
     </style>
 </head>
 <body>
-    <!-- Start Screen -->
-    <div id="start-screen" class="screen active">
-        <h1>UNSOLVED</h1>
-        <button id="start-button">START</button>
-        <p class="version">v1.1 - The Exposure Files</p>
-        <p class="copyright">© BokiieStan, 2025</p>
-        <p class="status">status: <span class="flicker">redacted</span></p>
-    </div>
-
-    <!-- Game Container -->
-    <div id="game-container" class="screen">
+    <div id="game-container">
         <!-- Case Selection Screen -->
         <div id="case-selection" class="screen">
             <h1>UNSOLVED CASES</h1>
@@ -29,6 +19,7 @@
             <div class="button-group">
                 <button id="load-game" class="hidden">💾 Load Game</button>
                 <button id="settings-btn">⚙️ Settings</button>
+                <button id="back-button">← Back</button>
             </div>
         </div>
 

@@ -22,7 +22,6 @@ const gameState = {
 // DOM Elements
 const elements = {
     // Screens
-    startScreen: document.getElementById('start-screen'),
     caseSelection: document.getElementById('case-selection'),
     mainGame: document.getElementById('main-game'),
     
@@ -30,7 +29,7 @@ const elements = {
     caseGrid: document.getElementById('case-grid'),
     loadGameBtn: document.getElementById('load-game'),
     settingsBtn: document.getElementById('settings-btn'),
-    startButton: document.getElementById('start-button'),
+    backButton: document.getElementById('back-button'),
     
     // Main game
     leftPanel: document.getElementById('left-panel'),
@@ -86,6 +85,15 @@ const soundBuffers = {};
 document.addEventListener('DOMContentLoaded', () => {
     initGame();
     setupEventListeners();
+    
+    // Check for load parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('load')) {
+        loadGame();
+    } else {
+        // Show case selection by default
+        showCaseSelection();
+    }
 });
 
 function initGame() {
@@ -100,11 +108,6 @@ function initGame() {
         };
     });
     
-    // Check for saved game
-    if (localStorage.getItem('unsolved_save')) {
-        elements.loadGameBtn.classList.remove('hidden');
-    }
-    
     // Initialize audio
     initAudio();
     
@@ -114,8 +117,12 @@ function initGame() {
 }
 
 function setupEventListeners() {
-    // Start button
-    elements.startButton.addEventListener('click', showCaseSelection);
+    // Back button
+    if (elements.backButton) {
+        elements.backButton.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    }
     
     // Case selection
     elements.loadGameBtn.addEventListener('click', loadGame);
@@ -141,20 +148,13 @@ function setupEventListeners() {
     // Main game
     elements.viewEvidenceBtn.addEventListener('click', showEvidenceModal);
     elements.saveGameBtn.addEventListener('click', saveGame);
-    elements.quitGameBtn.addEventListener('click', showStartScreen);
+    elements.quitGameBtn.addEventListener('click', () => window.location.href = 'index.html');
     elements.accuseBtn.addEventListener('click', showAccuseModal);
     elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
     elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
 }
 
-function showStartScreen() {
-    elements.startScreen.classList.add('active');
-    elements.caseSelection.classList.remove('active');
-    elements.mainGame.classList.remove('active');
-}
-
 function showCaseSelection() {
-    elements.startScreen.classList.remove('active');
     elements.caseSelection.classList.add('active');
     elements.mainGame.classList.remove('active');
     
