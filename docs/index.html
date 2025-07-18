@@ -1,76 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNSOLVED - Detective Game</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./night-mode.css">
-    <link rel="stylesheet" href="./desktop-sim.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNSOLVED - Detective Game</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:,">
 </head>
 <body>
-    <div id="start-screen">
-        <div class="glitch-container">
-            <h1 class="glitch" data-text="UNSOLVED">UNSOLVED</h1>
-        </div>
-        <div class="menu-buttons">
-            <button id="start-button" class="menu-btn">START</button>
-            <button id="load-button" class="menu-btn hidden">💾 LOAD GAME</button>
-            <button id="create-case-btn" class="menu-btn">🔧 CREATE CASE</button>
-            <button id="mods-btn" class="menu-btn">🎭 MODS</button>
-        </div>
-        <div class="status-info">
-            <p class="version">v2.0 - The Nightmare Files</p>
-            <p class="copyright">© BokiieStan, 2025</p>
-            <p class="status">status: <span class="flicker">corrupted</span></p>
-        </div>
-        
-        <!-- Night Mode Overlay -->
-        <div id="night-overlay" class="night-overlay"></div>
-        
-        <!-- VHS Glitch Effects -->
-        <div id="vhs-overlay" class="vhs-overlay"></div>
-        
-        <!-- Whispering Audio Layer -->
-        <div id="whisper-layer" class="whisper-layer"></div>
+  <div id="spa-root">
+    <!-- Case Selection Screen -->
+    <section id="case-select" class="spa-screen active">
+      <h1>🕵️ UNSOLVED</h1>
+      <p>Select a case to investigate:</p>
+      <div id="case-list"></div>
+      <button id="import-mod-btn">Import Mod (.USMOD)</button>
+      <input type="file" id="mod-file-input" accept=".usmod" style="display:none">
+      <footer>
+        <span class="version">v2.0 SPA</span>
+        <span class="copyright">© BokiieStan, 2025</span>
+      </footer>
+    </section>
+
+    <!-- Main Game Screen -->
+    <section id="main-game" class="spa-screen">
+      <header>
+        <button id="back-to-cases">⬅️ Cases</button>
+        <span id="game-case-title"></span>
+        <span id="game-sanity"></span>
+        <span id="game-clock"></span>
+      </header>
+      <div class="game-panels">
+        <aside id="suspect-panel">
+          <h2>👤 Suspects</h2>
+          <ul id="suspect-list"></ul>
+        </aside>
+        <main id="evidence-panel">
+          <h2>🔎 Evidence</h2>
+          <ul id="evidence-list"></ul>
+        </main>
+      </div>
+      <div id="dialogue-box"></div>
+      <footer>
+        <button id="view-evidence-btn">View All Evidence</button>
+        <button id="view-suspects-btn">View All Suspects</button>
+        <button id="accuse-btn">Accuse</button>
+        <button id="save-btn">💾 Save</button>
+      </footer>
+    </section>
+
+    <!-- Evidence Modal -->
+    <div id="evidence-modal" class="spa-modal">
+      <div class="modal-content">
+        <h2>All Evidence</h2>
+        <ul id="modal-evidence-list"></ul>
+        <button id="close-evidence-modal">Close</button>
+      </div>
     </div>
 
-    <!-- Custom Cursor -->
-    <div id="custom-cursor" class="custom-cursor"></div>
-
-    <!-- Terminal/Command Line Interface -->
-    <div id="terminal" class="terminal hidden">
-        <div class="terminal-header">
-            <span class="terminal-title">UNSOLVED_TERMINAL.exe</span>
-            <button class="terminal-close">×</button>
-        </div>
-        <div class="terminal-content">
-            <div class="terminal-output"></div>
-            <div class="terminal-input-line">
-                <span class="prompt">></span>
-                <input type="text" class="terminal-input" placeholder="Enter command...">
-            </div>
-        </div>
+    <!-- Suspects Modal -->
+    <div id="suspects-modal" class="spa-modal">
+      <div class="modal-content">
+        <h2>All Suspects</h2>
+        <ul id="modal-suspect-list"></ul>
+        <button id="close-suspects-modal">Close</button>
+      </div>
     </div>
 
-    <!-- Developer Popup -->
-    <div id="dev-popup" class="dev-popup hidden">
-        <div class="dev-content">
-            <h3>⚠️ DEVELOPER MESSAGE</h3>
-            <p id="dev-message"></p>
-            <button class="dev-close">ACKNOWLEDGE</button>
-        </div>
+    <!-- Accuse Modal -->
+    <div id="accuse-modal" class="spa-modal">
+      <div class="modal-content">
+        <h2>Accuse a Suspect</h2>
+        <ul id="accuse-list"></ul>
+        <button id="close-accuse-modal">Cancel</button>
+      </div>
     </div>
 
-    <script src="./audio-engine.js"></script>
-    <script src="./night-mode.js"></script>
-    <script src="./desktop-sim.js"></script>
-    <script src="./terminal.js"></script>
-    <script src="./save-system.js"></script>
-    <script src="./modding-tools.js"></script>
-    <script src="./main-script.js"></script>
+    <!-- Mod Import Modal (stub) -->
+    <div id="mod-import-modal" class="spa-modal">
+      <div class="modal-content">
+        <h2>Import Mod (.USMOD)</h2>
+        <p>Feature coming soon!</p>
+        <button id="close-mod-import-modal">Close</button>
+      </div>
+    </div>
+
+    <!-- Toast/Notification -->
+    <div id="toast" class="spa-toast"></div>
+  </div>
+  <script src="./main.js"></script>
 </body>
 </html>
