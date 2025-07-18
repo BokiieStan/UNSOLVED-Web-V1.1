@@ -438,6 +438,537 @@ button:hover {
     display: none !important;
 }
 
+/* Corruption Screen */
+.corruption-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.corruption-content {
+    background: #000;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    color: var(--primary-color);
+}
+
+.corruption-content h2 {
+    color: #ff0000;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.corruption-content p {
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.corruption-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.corruption-options button {
+    background: #ff0000;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.corruption-options button:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+/* Save Indicator */
+.save-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    z-index: 5000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.save-indicator.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Mod Manager */
+.mod-manager {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mod-manager-content {
+    background: #000;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 1000px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mod-manager-header {
+    background: var(--primary-color);
+    color: #000;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.mod-close {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.mod-manager-tabs {
+    display: flex;
+    background: #111;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.mod-tab {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    padding: 15px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.mod-tab:hover {
+    background: #222;
+}
+
+.mod-tab.active {
+    background: var(--primary-color);
+    color: #000;
+}
+
+.mod-tab-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: none;
+}
+
+.mod-tab-content.active {
+    display: block;
+}
+
+.mod-cases-list {
+    margin-bottom: 20px;
+}
+
+.mod-case-item {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mod-case-info h4 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.mod-case-info p {
+    margin: 2px 0;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.mod-case-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.mod-case-actions button {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.mod-btn {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    margin: 5px;
+}
+
+/* Case Wizard */
+.case-wizard {
+    padding: 20px;
+}
+
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.wizard-step h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.wizard-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.wizard-form label {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.wizard-form input,
+.wizard-form select,
+.wizard-form textarea {
+    background: #111;
+    border: 1px solid #333;
+    color: var(--primary-color);
+    padding: 10px;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.wizard-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.wizard-btn {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.evidence-builder,
+.suspects-builder {
+    margin-bottom: 20px;
+}
+
+.evidence-item-template,
+.suspect-item-template {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.evidence-item-template input,
+.evidence-item-template textarea,
+.evidence-item-template select,
+.suspect-item-template input {
+    background: #000;
+    border: 1px solid #555;
+    color: var(--primary-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.suspect-topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Import/Export Sections */
+.import-section,
+.export-section {
+    margin-bottom: 30px;
+}
+
+.import-section h3,
+.export-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#import-json {
+    width: 100%;
+    min-height: 200px;
+    background: #111;
+    border: 1px solid #333;
+    color: var(--primary-color);
+    padding: 15px;
+    border-radius: 4px;
+    font-family: 'Courier Prime', monospace;
+    resize: vertical;
+}
+
+#import-file {
+    margin-bottom: 10px;
+}
+
+/* Enhanced Interview Modal */
+#enhanced-interview-modal .modal-content {
+    width: 90%;
+    max-width: 1200px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.interview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.suspect-emotion {
+    font-size: 24px;
+}
+
+.interview-content {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.topic-selection {
+    width: 300px;
+    border-right: 1px solid #333;
+    padding-right: 20px;
+}
+
+.topic-selection h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.topic-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.topic-btn {
+    background: #111;
+    border: 1px solid #333;
+    color: var(--primary-color);
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.topic-btn:hover {
+    background: #222;
+    border-color: var(--primary-color);
+}
+
+.dialogue-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialogue-history {
+    flex: 1;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    max-height: 400px;
+}
+
+.dialogue-question {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.dialogue-response {
+    color: #fff;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #222;
+    border-radius: 4px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.dialogue-response.warning {
+    border-left-color: #ff0000;
+    background: #330000;
+}
+
+.current-response {
+    background: #000;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 15px;
+    min-height: 100px;
+}
+
+.interview-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+}
+
+.interview-actions button {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+/* Mod Case Button */
+.case-btn.mod-case {
+    border-color: #ff6b35;
+    position: relative;
+}
+
+.case-btn.mod-case::after {
+    content: 'MOD';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff6b35;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Enhanced Evidence Styles */
+.evidence-item {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.evidence-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.decrypt-btn,
+.check-btn {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.decrypt-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+/* Terminal Style for Browser */
+.terminal-style {
+    font-family: 'Courier Prime', monospace;
+    line-height: 1.4;
+}
+
+.terminal-style .prompt {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.terminal-style .command {
+    color: #fff;
+}
+
+.terminal-style .output {
+    color: #aaa;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .panels {
@@ -457,6 +988,31 @@ button:hover {
 
     .modal-content.wide {
         width: 95%;
+    }
+
+    .mod-manager-content {
+        width: 95%;
+        height: 90%;
+    }
+    
+    .interview-content {
+        flex-direction: column;
+    }
+    
+    .topic-selection {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #333;
+        padding-right: 0;
+        padding-bottom: 15px;
+    }
+    
+    .suspect-topics {
+        grid-template-columns: 1fr;
+    }
+    
+    .corruption-options {
+        flex-direction: column;
     }
 }
 
