@@ -551,13 +551,13 @@ function setupEnhancedEventListeners() {
     
             if (startButton) {
             startButton.addEventListener('click', () => {
-                window.location.href = './game.html';
+                window.location.href = '/UNSOLVED-Web-V2.0/game.html';
             });
         }
         
         if (loadButton) {
             loadButton.addEventListener('click', () => {
-                window.location.href = './game.html?load=true';
+                window.location.href = '/UNSOLVED-Web-V2.0/game.html?load=true';
             });
         }
     

@@ -419,8 +419,8 @@ class ModdingTools {
         this.hideModManager();
         
         // Navigate to game
-        if (window.location.pathname.includes('./index.html')) {
-            window.location.href = './game.html?case=' + modCase.id;
+        if (window.location.pathname.includes('index.html')) {
+            window.location.href = '/UNSOLVED-Web-V2.0/game.html?case=' + modCase.id;
         } else {
             // If already in game, restart with mod case
             location.reload();

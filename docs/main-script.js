@@ -120,7 +120,7 @@ function setupEventListeners() {
     // Back button
     if (elements.backButton) {
         elements.backButton.addEventListener('click', () => {
-            window.location.href = './index.html';
+            window.location.href = '/UNSOLVED-Web-V2.0/index.html';
         });
     }
     
@@ -148,7 +148,7 @@ function setupEventListeners() {
     // Main game
     elements.viewEvidenceBtn.addEventListener('click', showEvidenceModal);
     elements.saveGameBtn.addEventListener('click', saveGame);
-    elements.quitGameBtn.addEventListener('click', () => window.location.href = './index.html');
+    elements.quitGameBtn.addEventListener('click', () => window.location.href = '/UNSOLVED-Web-V2.0/index.html');
     elements.accuseBtn.addEventListener('click', showAccuseModal);
     elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
     elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
