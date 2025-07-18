@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mods Manager - UNSOLVED</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./night-mode.css">
+    <link rel="stylesheet" href="./desktop-sim.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+    </style>
+</head>
+<body>
+    <div id="mod-manager"></div>
+    <script src="./moddability-tools.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof moddingTools !== 'undefined' && moddingTools) {
+                moddingTools.showModManager();
+            }
+        });
+    </script>
+    <button onclick="window.location.href='./index.html'">⬅️ BACK</button>
+</body>
+</html> 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Game - UNSOLVED</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./night-mode.css">
+    <link rel="stylesheet" href="./desktop-sim.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+    </style>
+</head>
+<body>
+    <div id="load-game-screen">
+        <h1>Load Game</h1>
+        <button id="load-game">Load Saved Game</button>
+        <button id="back-button">⬅️ BACK</button>
+    </div>
+    <script src="./main-script.js"></script>
+    <script>
+        document.getElementById('load-game').addEventListener('click', function() {
+            // This will trigger the loadGame function in main-script.js
+            if (typeof loadGame === 'function') loadGame();
+        });
+        document.getElementById('back-button').addEventListener('click', function() {
+            window.location.href = './index.html';
+        });
+    </script>
+</body>
+</html> 
