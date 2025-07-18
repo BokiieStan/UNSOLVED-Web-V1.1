@@ -120,7 +120,7 @@ function setupEventListeners() {
     // Back button
     if (elements.backButton) {
         elements.backButton.addEventListener('click', () => {
-            window.location.href = './docs/index.html';
+            window.location.href = "./index.html";
         });
     }
     
@@ -148,7 +148,7 @@ function setupEventListeners() {
     // Main game
     elements.viewEvidenceBtn.addEventListener('click', showEvidenceModal);
     elements.saveGameBtn.addEventListener('click', saveGame);
-    elements.quitGameBtn.addEventListener('click', () => window.location.href = './docs/index.html');
+    elements.quitGameBtn.addEventListener('click', () => window.location.href = "./index.html");
     elements.accuseBtn.addEventListener('click', showAccuseModal);
     elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
     elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
@@ -184,10 +184,10 @@ function initAudio() {
         ];
         
         soundFiles.forEach(sound => {
-            loadSound(`sounds/${sound}.mp3`).then(buffer => {
+            loadSound(`./sounds/${sound}.mp3`).then(buffer => {
                 soundBuffers[sound] = buffer;
             }).catch(() => {
-                loadSound(`sounds/${sound}.wav`).then(buffer => {
+                loadSound(`./sounds/${sound}.wav`).then(buffer => {
                     soundBuffers[sound] = buffer;
                 });
             });
@@ -325,7 +325,7 @@ async function updateText() {
 
 async function loadFile() {
     try {
-        const response = await fetch(`./docs/cases/${gameState.currentCase}/report.txt`);
+        const response = await fetch(`./cases/${gameState.currentCase}/report.txt`);
         if (!response.ok) throw new Error("File not found");
         return await response.text();
     } catch (error) {
@@ -354,7 +354,7 @@ async function getCaseTags() {
 
 async function loadOptions() {
     try {
-        const response = await fetch(`./docs/cases/${gameState.currentCase}/options.json`);
+        const response = await fetch(`./cases/${gameState.currentCase}/options.json`);
         if (!response.ok) throw new Error("File not found");
         return await response.json();
     } catch (error) {
@@ -365,7 +365,7 @@ async function loadOptions() {
 
 async function loadSuspects() {
     try {
-        const response = await fetch(`./docs/cases/${gameState.currentCase}/suspects.json`);
+        const response = await fetch(`./cases/${gameState.currentCase}/suspects.json`);
         if (!response.ok) throw new Error("File not found");
         const suspects = await response.json();
         
@@ -384,7 +384,7 @@ async function loadSuspects() {
 
 async function loadEvidence() {
     try {
-        const response = await fetch(`./docs/cases/${gameState.currentCase}/evidence.json`);
+        const response = await fetch(`./cases/${gameState.currentCase}/evidence.json`);
         if (!response.ok) throw new Error("File not found");
         const evidence = await response.json();
         
@@ -403,7 +403,7 @@ async function loadEvidence() {
 
 async function loadSolution() {
     try {
-        const response = await fetch(`./docs/cases/${gameState.currentCase}/solution.json`);
+        const response = await fetch(`./cases/${gameState.currentCase}/solution.json`);
         if (!response.ok) throw new Error("File not found");
         return await response.json();
     } catch (error) {

@@ -60,11 +60,11 @@ class AudioEngine {
         
         for (const sound of soundFiles) {
             try {
-                const buffer = await this.loadSound(`./sounds/${sound}.mp3`);
+                const buffer = await this.loadSound("./sounds/" + sound + ".mp3");
                 this.soundBuffers[sound] = buffer;
             } catch (e) {
                 try {
-                    const buffer = await this.loadSound(`./sounds/${sound}.wav`);
+                    const buffer = await this.loadSound("./sounds/" + sound + ".wav");
                     this.soundBuffers[sound] = buffer;
                 } catch (e2) {
                     console.warn(`Could not load sound: ${sound}`);

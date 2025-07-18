@@ -551,13 +551,13 @@ function setupEnhancedEventListeners() {
     
             if (startButton) {
             startButton.addEventListener('click', () => {
-                window.location.href = './docs/game.html';
+                window.location.href = "./game.html";
             });
         }
         
         if (loadButton) {
             loadButton.addEventListener('click', () => {
-                window.location.href = './docs/game.html?load=true';
+                window.location.href = "./game.html?load=true";
             });
         }
     
