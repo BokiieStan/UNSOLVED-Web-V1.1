@@ -152,6 +152,33 @@ function setupEventListeners() {
     elements.accuseBtn.addEventListener('click', showAccuseModal);
     elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
     elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
+
+    // Start button
+    const startBtn = document.getElementById('start-button');
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            showCaseSelection();
+        });
+    }
+    // Create Case button
+    const createCaseBtn = document.getElementById('create-case-btn');
+    if (createCaseBtn) {
+        createCaseBtn.addEventListener('click', () => {
+            if (typeof moddingTools !== 'undefined' && moddingTools) {
+                moddingTools.showModManager();
+                moddingTools.createNewCase();
+            }
+        });
+    }
+    // Mods button
+    const modsBtn = document.getElementById('mods-btn');
+    if (modsBtn) {
+        modsBtn.addEventListener('click', () => {
+            if (typeof moddingTools !== 'undefined' && moddingTools) {
+                moddingTools.showModManager();
+            }
+        });
+    }
 }
 
 function showCaseSelection() {
