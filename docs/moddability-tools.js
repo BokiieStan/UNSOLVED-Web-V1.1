@@ -420,7 +420,7 @@ class ModdingTools {
         
         // Navigate to game
         if (window.location.pathname.includes('index.html')) {
-            window.location.href = './game.html?case=' + modCase.id;
+            window.location.href = './docs/game.html?case=' + modCase.id;
         } else {
             // If already in game, restart with mod case
             location.reload();
