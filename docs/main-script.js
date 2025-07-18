@@ -120,11 +120,7 @@ function setupEventListeners() {
     // Back button
     if (elements.backButton) {
         elements.backButton.addEventListener('click', () => {
-<<<<<<< HEAD
             window.location.href = './index.html';
-=======
-            window.location.href = '/UNSOLVED-Web-V2.0/index.html';
->>>>>>> parent of 60a3997 (Remove obsolete files including audio engine, desktop simulation, game HTML, and associated styles and scripts to streamline the project structure for UNSOLVED - Detective Game v2.0.)
         });
     }
     
@@ -152,11 +148,7 @@ function setupEventListeners() {
     // Main game
     elements.viewEvidenceBtn.addEventListener('click', showEvidenceModal);
     elements.saveGameBtn.addEventListener('click', saveGame);
-<<<<<<< HEAD
     elements.quitGameBtn.addEventListener('click', () => window.location.href = './index.html');
-=======
-    elements.quitGameBtn.addEventListener('click', () => window.location.href = '/UNSOLVED-Web-V2.0/index.html');
->>>>>>> parent of 60a3997 (Remove obsolete files including audio engine, desktop simulation, game HTML, and associated styles and scripts to streamline the project structure for UNSOLVED - Detective Game v2.0.)
     elements.accuseBtn.addEventListener('click', showAccuseModal);
     elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
     elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
@@ -333,7 +325,7 @@ async function updateText() {
 
 async function loadFile() {
     try {
-        const response = await fetch(`cases/${gameState.currentCase}/report.txt`);
+        const response = await fetch(`./cases/${gameState.currentCase}/report.txt`);
         if (!response.ok) throw new Error("File not found");
         return await response.text();
     } catch (error) {

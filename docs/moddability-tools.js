@@ -419,13 +419,8 @@ class ModdingTools {
         this.hideModManager();
         
         // Navigate to game
-<<<<<<< HEAD
-        if (window.location.pathname.includes('./index.html')) {
-            window.location.href = './game.html?case=' + modCase.id;
-=======
         if (window.location.pathname.includes('index.html')) {
-            window.location.href = '/UNSOLVED-Web-V2.0/game.html?case=' + modCase.id;
->>>>>>> parent of 60a3997 (Remove obsolete files including audio engine, desktop simulation, game HTML, and associated styles and scripts to streamline the project structure for UNSOLVED - Detective Game v2.0.)
+            window.location.href = './game.html?case=' + modCase.id;
         } else {
             // If already in game, restart with mod case
             location.reload();

@@ -551,21 +551,13 @@ function setupEnhancedEventListeners() {
     
             if (startButton) {
             startButton.addEventListener('click', () => {
-<<<<<<< HEAD
                 window.location.href = './game.html';
-=======
-                window.location.href = '/UNSOLVED-Web-V2.0/game.html';
->>>>>>> parent of 60a3997 (Remove obsolete files including audio engine, desktop simulation, game HTML, and associated styles and scripts to streamline the project structure for UNSOLVED - Detective Game v2.0.)
             });
         }
         
         if (loadButton) {
             loadButton.addEventListener('click', () => {
-<<<<<<< HEAD
                 window.location.href = './game.html?load=true';
-=======
-                window.location.href = '/UNSOLVED-Web-V2.0/game.html?load=true';
->>>>>>> parent of 60a3997 (Remove obsolete files including audio engine, desktop simulation, game HTML, and associated styles and scripts to streamline the project structure for UNSOLVED - Detective Game v2.0.)
             });
         }
     
