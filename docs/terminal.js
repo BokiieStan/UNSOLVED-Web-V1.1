@@ -227,7 +227,7 @@ class TerminalSystem {
             '/cases/case003_poisoned_professor': ['evidence.txt', 'suspects.txt', 'timeline.txt', 'photos'],
             '/system': ['processes.txt', 'memory.txt', 'network.txt'],
             '/logs': ['access.log', 'error.log', 'debug.log'],
-            '/config': ['settings.json', 'user.json', 'game.json']
+            '/config': ['./settings.json', './user.json', './game.json']
         };
         
         const currentFiles = files[this.currentDirectory] || [];

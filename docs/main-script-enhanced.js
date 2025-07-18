@@ -549,17 +549,17 @@ function setupEnhancedEventListeners() {
     const createCaseBtn = document.getElementById('create-case-btn');
     const modsBtn = document.getElementById('mods-btn');
     
-    if (startButton) {
-        startButton.addEventListener('click', () => {
-            window.location.href = 'game.html';
-        });
-    }
-    
-    if (loadButton) {
-        loadButton.addEventListener('click', () => {
-            window.location.href = 'game.html?load=true';
-        });
-    }
+            if (startButton) {
+            startButton.addEventListener('click', () => {
+                window.location.href = './game.html';
+            });
+        }
+        
+        if (loadButton) {
+            loadButton.addEventListener('click', () => {
+                window.location.href = './game.html?load=true';
+            });
+        }
     
     if (createCaseBtn) {
         createCaseBtn.addEventListener('click', () => {
