@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNSOLVED - Detective Game</title>
+    <title>UNSOLVED v2.0³ - TRINITY PROTOCOL</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./night-mode.css">
+    <link rel="stylesheet" href="./desktop-sim.css">
+    <link rel="stylesheet" href="./trinity-protocol.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
     </style>
@@ -30,13 +33,15 @@
             }
             
             startButton.addEventListener('click', () => {
-                window.location.href = "./game.html";
+                window.location.href = "./case-select.html";
             });
             
             loadButton.addEventListener('click', () => {
-                window.location.href = "./game.html?load=true";
+                window.location.href = "./load.html";
             });
         });
     </script>
+    <script src="./main-script.js"></script>
+    <script src="./trinity-protocol.js"></script>
 </body>
 </html>
