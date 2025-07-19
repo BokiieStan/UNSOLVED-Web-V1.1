@@ -13,34 +13,121 @@
     </style>
 </head>
 <body>
-    <div id="start-screen">
-        <h1>UNSOLVED</h1>
-        <button id="start-button">START</button>
-        <button id="load-button" class="hidden">💾 LOAD GAME</button>
-        <p class="version">v1.1 - The Exposure Files</p>
-        <p class="copyright">© BokiieStan, 2025</p>
-        <p class="status">status: <span class="flicker">redacted</span></p>
+    <!-- Case Selection Screen -->
+    <div id="case-selection" class="screen">
+        <h1>Case Selection</h1>
+        <div id="case-grid"></div>
+        <button id="load-game">💾 LOAD GAME</button>
+        <button id="settings-btn">⚙️ SETTINGS</button>
+        <button id="back-button">⬅️ BACK</button>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const startButton = document.getElementById('start-button');
-            const loadButton = document.getElementById('load-button');
-            
-            // Show load button if save exists
-            if (localStorage.getItem('unsolved_save')) {
-                loadButton.classList.remove('hidden');
-            }
-            
-            startButton.addEventListener('click', () => {
-                window.location.href = "./case-select.html";
-            });
-            
-            loadButton.addEventListener('click', () => {
-                window.location.href = "./load.html";
-            });
-        });
-    </script>
+    <!-- Main Game Screen -->
+    <div id="main-game" class="screen">
+        <!-- Left Panel -->
+        <div id="left-panel">
+            <div id="case-title">🕵️ Case Title</div>
+            <div id="file-tags"></div>
+            <div id="suspects-list"></div>
+            <button id="view-evidence">View Evidence (0)</button>
+            <button id="save-game">💾 SAVE</button>
+            <button id="quit-game">❌ QUIT</button>
+            <button id="accuse-btn" class="hidden">🔍 ACCUSE</button>
+        </div>
+
+        <!-- Right Panel -->
+        <div id="right-panel">
+            <div id="file-display"></div>
+        </div>
+
+        <!-- Bottom Panel -->
+        <div id="bottom-panel">
+            <div id="clock">🕐 12:00 PM</div>
+            <div id="sanity">🧠 SANITY: 100%</div>
+            <div id="progress-bar">
+                <div id="progress-fill"></div>
+                <span id="progress-text">0% Complete</span>
+            </div>
+            <div id="achievements">🏆 0</div>
+        </div>
+
+        <!-- Dialogue Box -->
+        <div id="dialogue-box" class="hidden"></div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>⚙️ Settings</h3>
+            <div class="setting">
+                <label>
+                    <input type="checkbox" id="sound-toggle" checked>
+                    🔊 Sound Effects
+                </label>
+            </div>
+            <div class="setting">
+                <label>
+                    <input type="checkbox" id="tts-toggle" checked>
+                    🗣️ Text-to-Speech
+                </label>
+            </div>
+            <button id="close-settings">Close</button>
+        </div>
+    </div>
+
+    <!-- Evidence Modal -->
+    <div id="evidence-modal" class="modal hidden">
+        <div class="modal-content wide">
+            <h3>📁 Evidence</h3>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="collected">Collected (0)</button>
+                <button class="tab-button" data-tab="all">All Evidence (0)</button>
+            </div>
+            <div class="tab-content active" id="collected-tab">
+                <div id="collected-evidence"></div>
+            </div>
+            <div class="tab-content" id="all-tab">
+                <div id="all-evidence"></div>
+            </div>
+            <button id="close-evidence">Close</button>
+        </div>
+    </div>
+
+    <!-- Interview Modal -->
+    <div id="interview-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="suspect-name">Interview: Suspect</h3>
+            <div id="topic-buttons"></div>
+            <div id="suspect-response"></div>
+            <button id="close-interview">End Interview</button>
+        </div>
+    </div>
+
+    <!-- Option Selection Modal -->
+    <div id="option-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="option-title">Choose Option</h3>
+            <div id="option-buttons"></div>
+        </div>
+    </div>
+
+    <!-- Accuse Modal -->
+    <div id="accuse-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>🔍 Make Your Accusation</h3>
+            <p>Who do you think is the killer?</p>
+            <div id="suspect-choices"></div>
+        </div>
+    </div>
+
+    <!-- Achievement Modal -->
+    <div id="achievement-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>🏆 Achievement Unlocked!</h3>
+            <p id="achievement-name">Achievement Name</p>
+        </div>
+    </div>
+
     <script src="./main-script.js"></script>
     <script src="./trinity-protocol.js"></script>
 </body>
