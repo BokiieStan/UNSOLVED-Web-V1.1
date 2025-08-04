@@ -76,6 +76,20 @@ const elements = {
     achievementName: document.getElementById('achievement-name')
 };
 
+// Helper function to safely get elements
+function getElement(id) {
+    const element = document.getElementById(id);
+    if (!element) {
+        console.warn(`Element with id '${id}' not found`);
+    }
+    return element;
+}
+
+// Safe element access
+function safeElement(id) {
+    return getElement(id) || { style: {}, innerHTML: '', textContent: '', addEventListener: () => {} };
+}
+
 // Audio Context
 let audioContext;
 let backgroundMusic;
@@ -125,33 +139,55 @@ function setupEventListeners() {
     }
     
     // Case selection
-    elements.loadGameBtn.addEventListener('click', loadGame);
-    elements.settingsBtn.addEventListener('click', () => toggleModal(elements.settingsModal));
+    if (elements.loadGameBtn) {
+        elements.loadGameBtn.addEventListener('click', loadGame);
+    }
+    if (elements.settingsBtn) {
+        elements.settingsBtn.addEventListener('click', () => toggleModal(elements.settingsModal));
+    }
     
     // Settings
-    elements.soundToggle.addEventListener('change', (e) => {
-        gameState.soundEnabled = e.target.checked;
-        if (gameState.soundEnabled && backgroundMusic) {
-            backgroundMusic.loop = true;
-            backgroundMusic.start();
-        } else if (backgroundMusic) {
-            backgroundMusic.stop();
-        }
-    });
+    if (elements.soundToggle) {
+        elements.soundToggle.addEventListener('change', (e) => {
+            gameState.soundEnabled = e.target.checked;
+            if (gameState.soundEnabled && backgroundMusic) {
+                backgroundMusic.loop = true;
+                backgroundMusic.start();
+            } else if (backgroundMusic) {
+                backgroundMusic.stop();
+            }
+        });
+    }
     
-    elements.ttsToggle.addEventListener('change', (e) => {
-        gameState.ttsEnabled = e.target.checked;
-    });
+    if (elements.ttsToggle) {
+        elements.ttsToggle.addEventListener('change', (e) => {
+            gameState.ttsEnabled = e.target.checked;
+        });
+    }
     
-    elements.closeSettings.addEventListener('click', () => toggleModal(elements.settingsModal));
+    if (elements.closeSettings) {
+        elements.closeSettings.addEventListener('click', () => toggleModal(elements.settingsModal));
+    }
     
     // Main game
-    elements.viewEvidenceBtn.addEventListener('click', showEvidenceModal);
-    elements.saveGameBtn.addEventListener('click', saveGame);
-    elements.quitGameBtn.addEventListener('click', () => window.location.href = "./index.html");
-    elements.accuseBtn.addEventListener('click', showAccuseModal);
-    elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
-    elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
+    if (elements.viewEvidenceBtn) {
+        elements.viewEvidenceBtn.addEventListener('click', showEvidenceModal);
+    }
+    if (elements.saveGameBtn) {
+        elements.saveGameBtn.addEventListener('click', saveGame);
+    }
+    if (elements.quitGameBtn) {
+        elements.quitGameBtn.addEventListener('click', () => window.location.href = "./index.html");
+    }
+    if (elements.accuseBtn) {
+        elements.accuseBtn.addEventListener('click', showAccuseModal);
+    }
+    if (elements.closeEvidence) {
+        elements.closeEvidence.addEventListener('click', () => toggleModal(elements.evidenceModal));
+    }
+    if (elements.closeInterview) {
+        elements.closeInterview.addEventListener('click', () => toggleModal(elements.interviewModal));
+    }
 
     // Start button
     const startBtn = document.getElementById('start-button');
@@ -178,6 +214,11 @@ function setupEventListeners() {
                 moddingTools.showModManager();
             }
         });
+    }
+    
+    // Initialize audio engine
+    if (typeof AudioEngine !== 'undefined') {
+        window.audioEngine = new AudioEngine();
     }
 }
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNSOLVED Test Page</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./night-mode.css">
+    <link rel="stylesheet" href="./desktop-sim.css">
+    <link rel="stylesheet" href="./trinity-protocol.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+    </style>
+</head>
+<body>
+    <div id="test-container">
+        <h1>🧪 UNSOLVED Test Page</h1>
+        <div class="test-section">
+            <h2>Audio Engine Test</h2>
+            <button onclick="testAudio()">Test Audio</button>
+            <div id="audio-status">Audio: Not initialized</div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Night Mode Test</h2>
+            <button onclick="testNightMode()">Test Night Mode</button>
+            <div id="night-status">Night Mode: Disabled</div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Trinity Protocol Test</h2>
+            <button onclick="testTrinity()">Test Trinity Protocol</button>
+            <div id="trinity-status">Trinity: Not initialized</div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Mod Manager Test</h2>
+            <button onclick="testModManager()">Test Mod Manager</button>
+            <div id="mod-status">Mod Manager: Not tested</div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Navigation Test</h2>
+            <button onclick="window.location.href='./index.html'">Go to Main Menu</button>
+            <button onclick="window.location.href='./case-select.html'">Go to Case Selection</button>
+            <button onclick="window.location.href='./game.html'">Go to Game</button>
+        </div>
+    </div>
+    
+    <script src="./audio-engine.js"></script>
+    <script src="./night-mode.js"></script>
+    <script src="./trinity-protocol.js"></script>
+    <script src="./moddability-tools.js"></script>
+    <script>
+        let audioEngine, nightMode, trinityProtocol, moddingTools;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize components
+            try {
+                audioEngine = new AudioEngine();
+                document.getElementById('audio-status').textContent = 'Audio: Initialized';
+            } catch (e) {
+                document.getElementById('audio-status').textContent = 'Audio: Failed - ' + e.message;
+            }
+            
+            try {
+                nightMode = new NightModeSystem();
+                document.getElementById('night-status').textContent = 'Night Mode: Initialized';
+            } catch (e) {
+                document.getElementById('night-status').textContent = 'Night Mode: Failed - ' + e.message;
+            }
+            
+            try {
+                trinityProtocol = new TrinityProtocol();
+                document.getElementById('trinity-status').textContent = 'Trinity: Initialized';
+            } catch (e) {
+                document.getElementById('trinity-status').textContent = 'Trinity: Failed - ' + e.message;
+            }
+            
+            try {
+                moddingTools = new ModdingTools();
+                document.getElementById('mod-status').textContent = 'Mod Manager: Initialized';
+            } catch (e) {
+                document.getElementById('mod-status').textContent = 'Mod Manager: Failed - ' + e.message;
+            }
+        });
+        
+        function testAudio() {
+            if (audioEngine) {
+                audioEngine.playSound('success');
+                document.getElementById('audio-status').textContent = 'Audio: Test sound played';
+            }
+        }
+        
+        function testNightMode() {
+            if (nightMode) {
+                nightMode.activateNightMode();
+                document.getElementById('night-status').textContent = 'Night Mode: Activated';
+                setTimeout(() => {
+                    nightMode.deactivateNightMode();
+                    document.getElementById('night-status').textContent = 'Night Mode: Deactivated';
+                }, 3000);
+            }
+        }
+        
+        function testTrinity() {
+            if (trinityProtocol) {
+                trinityProtocol.createGlitchOverlay();
+                document.getElementById('trinity-status').textContent = 'Trinity: Glitch effect triggered';
+            }
+        }
+        
+        function testModManager() {
+            if (moddingTools) {
+                moddingTools.showModManager();
+                document.getElementById('mod-status').textContent = 'Mod Manager: Opened';
+            }
+        }
+    </script>
+</body>
+</html> 

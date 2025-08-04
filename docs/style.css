@@ -107,6 +107,53 @@ body {
     }
 }
 
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 9999;
+    animation: glitch 0.5s infinite;
+}
+
+.encryption-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    font-family: 'Courier Prime', monospace;
+    color: #00ff00;
+}
+
+.encryption-text {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2;
+}
+
+.encryption-text span {
+    display: block;
+    animation: flicker 0.3s infinite;
+}
+
 /* Case Selection Screen */
 #case-selection {
     text-align: center;
@@ -967,6 +1014,162 @@ button:hover {
 
 .terminal-style .output {
     color: #aaa;
+}
+
+/* Mod Manager Styles */
+.mod-manager-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier Prime', monospace;
+}
+
+.mod-manager-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 15px 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.wizard-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.wizard-section h3, .wizard-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.wizard-section label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.wizard-section input,
+.wizard-section select,
+.wizard-section textarea {
+    width: 100%;
+    padding: 10px;
+    background: var(--bg-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    font-family: inherit;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.wizard-section textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#evidence-builder,
+#suspects-builder {
+    margin-top: 15px;
+}
+
+.evidence-item,
+.suspect-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.evidence-item input,
+.suspect-item input {
+    flex: 1;
+    margin: 0;
+}
+
+.evidence-item button,
+.suspect-item button {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#save-case {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-family: inherit;
+}
+
+#save-case:hover {
+    background: #1976d2;
+}
+
+.import-section,
+.export-section {
+    margin-bottom: 30px;
+}
+
+#import-json {
+    width: 100%;
+    min-height: 200px;
+    font-family: 'Courier Prime', monospace;
+    background: var(--bg-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 4px;
 }
 
 /* Responsive Design */

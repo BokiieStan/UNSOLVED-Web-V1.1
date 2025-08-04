@@ -386,16 +386,114 @@ class TrinityProtocol {
     }
     
     // Placeholder functions for complex features
-    createGlitchOverlay() { /* Implementation */ }
-    createDistortionEffect() { /* Implementation */ }
-    removeVisualEffects() { /* Implementation */ }
-    makeFileVanish(file) { /* Implementation */ }
-    createFakeOS() { /* Implementation */ }
-    addFakeEncryption() { /* Implementation */ }
-    setupRealTimeConnection() { /* Implementation */ }
-    setupFakeEmails() { /* Implementation */ }
-    enableSpeedrunMode() { /* Implementation */ }
-    enableSlowburnMode() { /* Implementation */ }
+    createGlitchOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'glitch-overlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 0, 0.1);
+            pointer-events: none;
+            z-index: 9999;
+            animation: glitch 0.5s infinite;
+        `;
+        document.body.appendChild(overlay);
+        setTimeout(() => overlay.remove(), 2000);
+    }
+    
+    createDistortionEffect() {
+        document.body.style.filter = 'hue-rotate(180deg) contrast(150%) saturate(200%)';
+        setTimeout(() => {
+            document.body.style.filter = 'none';
+        }, 3000);
+    }
+    
+    removeVisualEffects() {
+        document.body.style.filter = 'none';
+        const overlays = document.querySelectorAll('.glitch-overlay');
+        overlays.forEach(overlay => overlay.remove());
+    }
+    
+    makeFileVanish(file) {
+        if (file && file.style) {
+            file.style.transition = 'opacity 2s ease-out';
+            file.style.opacity = '0';
+            setTimeout(() => {
+                if (file.parentNode) {
+                    file.parentNode.removeChild(file);
+                }
+            }, 2000);
+        }
+    }
+    
+    createFakeOS() {
+        const fakeOS = document.createElement('div');
+        fakeOS.id = 'fake-os';
+        fakeOS.innerHTML = `
+            <div class="fake-desktop">
+                <div class="fake-taskbar">
+                    <span class="fake-start">START</span>
+                    <span class="fake-time">12:00</span>
+                </div>
+                <div class="fake-windows">
+                    <div class="fake-window">System32.exe</div>
+                    <div class="fake-window">kernel.dll</div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(fakeOS);
+    }
+    
+    addFakeEncryption() {
+        const encryptionOverlay = document.createElement('div');
+        encryptionOverlay.className = 'encryption-overlay';
+        encryptionOverlay.innerHTML = `
+            <div class="encryption-text">
+                <span>ENCRYPTING...</span>
+                <span>ACCESS DENIED</span>
+                <span>SYSTEM COMPROMISED</span>
+            </div>
+        `;
+        document.body.appendChild(encryptionOverlay);
+        setTimeout(() => encryptionOverlay.remove(), 5000);
+    }
+    
+    setupRealTimeConnection() {
+        // Simulate real-time data connection
+        setInterval(() => {
+            const randomData = Math.random().toString(36).substring(7);
+            console.log(`[REAL-TIME] ${randomData}`);
+        }, 3000);
+    }
+    
+    setupFakeEmails() {
+        const fakeEmails = [
+            'URGENT: System breach detected',
+            'WARNING: Unauthorized access',
+            'ALERT: Data corruption imminent',
+            'CRITICAL: Sanity levels dropping'
+        ];
+        
+        setInterval(() => {
+            const email = fakeEmails[Math.floor(Math.random() * fakeEmails.length)];
+            console.log(`[EMAIL] ${email}`);
+        }, 10000);
+    }
+    
+    enableSpeedrunMode() {
+        this.gameMode = 'speedrun';
+        document.body.classList.add('speedrun-mode');
+        console.log('[SPEEDRUN] Mode activated');
+    }
+    
+    enableSlowburnMode() {
+        this.gameMode = 'slowburn';
+        document.body.classList.add('slowburn-mode');
+        console.log('[SLOWBURN] Mode activated');
+    }
 }
 
 // Initialize Trinity Protocol

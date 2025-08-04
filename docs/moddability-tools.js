@@ -29,8 +29,15 @@ class ModdingTools {
     }
     
     setupModManager() {
-        // Create mod manager UI
-        this.createModManager();
+        // Check if mod manager already exists in HTML
+        this.modManager = document.getElementById('mod-manager');
+        if (this.modManager) {
+            this.setupModManagerEvents();
+            this.updateModCasesList();
+        } else {
+            // Create mod manager UI if it doesn't exist
+            this.createModManager();
+        }
     }
     
     createModManager() {
@@ -128,6 +135,53 @@ class ModdingTools {
     showModManager() {
         if (this.modManager) {
             this.modManager.classList.remove('hidden');
+            this.updateModCasesList();
+            
+            // Set up tab functionality for the new HTML structure
+            this.setupTabNavigation();
+        }
+    }
+    
+    setupTabNavigation() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const targetContent = document.getElementById(`${targetTab}-tab`);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+        
+        // Set up wizard functionality
+        this.setupWizardEvents();
+    }
+    
+    setupWizardEvents() {
+        const addEvidenceBtn = document.getElementById('add-evidence');
+        const addSuspectBtn = document.getElementById('add-suspect');
+        const saveCaseBtn = document.getElementById('save-case');
+        
+        if (addEvidenceBtn) {
+            addEvidenceBtn.addEventListener('click', () => this.addEvidenceItem());
+        }
+        
+        if (addSuspectBtn) {
+            addSuspectBtn.addEventListener('click', () => this.addSuspectItem());
+        }
+        
+        if (saveCaseBtn) {
+            saveCaseBtn.addEventListener('click', () => this.finishWizard());
         }
     }
     

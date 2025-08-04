@@ -12,7 +12,80 @@
     </style>
 </head>
 <body>
-    <div id="mod-manager"></div>
+    <div id="mod-manager">
+        <div class="mod-manager-container">
+            <h1>🎭 Mod Manager</h1>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="installed">Installed Mods</button>
+                <button class="tab-button" data-tab="cases">Custom Cases</button>
+                <button class="tab-button" data-tab="wizard">Case Wizard</button>
+                <button class="tab-button" data-tab="import">Import/Export</button>
+            </div>
+            
+            <!-- Installed Mods Tab -->
+            <div id="installed-tab" class="tab-content active">
+                <div id="mods-list"></div>
+            </div>
+            
+            <!-- Custom Cases Tab -->
+            <div id="cases-tab" class="tab-content">
+                <div id="mod-cases-list"></div>
+                <button id="create-case-btn">Create New Case</button>
+            </div>
+            
+            <!-- Case Wizard Tab -->
+            <div id="wizard-tab" class="tab-content">
+                <div id="case-wizard">
+                    <h3>Case Creation Wizard</h3>
+                    <div class="wizard-section">
+                        <label>Case Name: <input type="text" id="wizard-name"></label>
+                        <label>Difficulty: 
+                            <select id="wizard-difficulty">
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </label>
+                        <label>Description: <textarea id="wizard-description"></textarea></label>
+                        <label>Correct Suspect: <input type="text" id="wizard-correct-suspect"></label>
+                        <label>Solution: <textarea id="wizard-solution"></textarea></label>
+                    </div>
+                    
+                    <div class="wizard-section">
+                        <h4>Evidence</h4>
+                        <div id="evidence-builder"></div>
+                        <button id="add-evidence">Add Evidence</button>
+                    </div>
+                    
+                    <div class="wizard-section">
+                        <h4>Suspects</h4>
+                        <div id="suspects-builder"></div>
+                        <button id="add-suspect">Add Suspect</button>
+                    </div>
+                    
+                    <button id="save-case">Save Case</button>
+                </div>
+            </div>
+            
+            <!-- Import/Export Tab -->
+            <div id="import-tab" class="tab-content">
+                <h3>Import/Export</h3>
+                <div class="import-section">
+                    <h4>Import JSON</h4>
+                    <textarea id="import-json" placeholder="Paste JSON data here..."></textarea>
+                    <button id="import-btn">Import</button>
+                </div>
+                <div class="export-section">
+                    <h4>Export</h4>
+                    <button id="export-all">Export All Cases</button>
+                    <button id="export-selected">Export Selected</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="./moddability-tools.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -12,7 +12,43 @@
     </style>
 </head>
 <body>
-    <div id="mod-manager"></div>
+    <div id="mod-manager">
+        <div class="mod-manager-container">
+            <h1>🔧 Create New Case</h1>
+            
+            <div id="case-wizard">
+                <h3>Case Creation Wizard</h3>
+                <div class="wizard-section">
+                    <label>Case Name: <input type="text" id="wizard-name"></label>
+                    <label>Difficulty: 
+                        <select id="wizard-difficulty">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </label>
+                    <label>Description: <textarea id="wizard-description"></textarea></label>
+                    <label>Correct Suspect: <input type="text" id="wizard-correct-suspect"></label>
+                    <label>Solution: <textarea id="wizard-solution"></textarea></label>
+                </div>
+                
+                <div class="wizard-section">
+                    <h4>Evidence</h4>
+                    <div id="evidence-builder"></div>
+                    <button id="add-evidence">Add Evidence</button>
+                </div>
+                
+                <div class="wizard-section">
+                    <h4>Suspects</h4>
+                    <div id="suspects-builder"></div>
+                    <button id="add-suspect">Add Suspect</button>
+                </div>
+                
+                <button id="save-case">Save Case</button>
+            </div>
+        </div>
+    </div>
+    
     <script src="./moddability-tools.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
